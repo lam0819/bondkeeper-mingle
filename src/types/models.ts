@@ -7,6 +7,7 @@ export interface Contact {
   phone?: string;
   company?: string;
   job?: string;
+  jobTitle?: string; // Added this field
   birthday?: Date | null;
   address?: string;
   notes?: string;
@@ -16,17 +17,24 @@ export interface Contact {
   createdAt: Date;
   updatedAt: Date;
   imageUrl?: string;
+  image?: string; // Added for compatibility
+  reminderDate?: Date | null; // Added this field
 }
+
+export type ContactTag = 'family' | 'friend' | 'work' | 'school' | 'networking' | 'hobby' | 'important';
 
 export interface Interaction {
   id: string;
   contactId: string;
-  type: 'call' | 'email' | 'meeting' | 'note' | 'other';
+  type: InteractionType;
   title: string;
   description?: string;
+  notes?: string; // Added this field
   date: Date;
   createdAt: Date;
 }
+
+export type InteractionType = 'call' | 'meeting' | 'email' | 'message' | 'social' | 'note' | 'other';
 
 export interface Reminder {
   id: string;
