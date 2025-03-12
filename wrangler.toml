@@ -1,0 +1,18 @@
+
+name = "bondkeeper-crm"
+compatibility_date = "2023-05-21"
+
+# Configure pages with dynamic functionality
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm run build"
+output_dir = "dist"
+
+# Define environment variables
+[env.production]
+ENVIRONMENT = "production"
+
+[env.development]
+ENVIRONMENT = "development"

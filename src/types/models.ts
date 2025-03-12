@@ -1,13 +1,4 @@
 
-export type ContactTag = 
-  | 'family' 
-  | 'friend' 
-  | 'work' 
-  | 'school' 
-  | 'networking' 
-  | 'hobby' 
-  | 'important';
-
 export interface Contact {
   id: string;
   firstName: string;
@@ -15,33 +6,25 @@ export interface Contact {
   email?: string;
   phone?: string;
   company?: string;
-  jobTitle?: string;
-  address?: string;
+  job?: string;
   birthday?: Date | null;
+  address?: string;
   notes?: string;
-  tags: ContactTag[];
-  image?: string;
+  tags: string[];
   lastContacted?: Date | null;
-  reminderDate?: Date | null;
   interactions: Interaction[];
   createdAt: Date;
   updatedAt: Date;
+  imageUrl?: string;
 }
-
-export type InteractionType = 
-  | 'call' 
-  | 'meeting' 
-  | 'email' 
-  | 'message' 
-  | 'social' 
-  | 'other';
 
 export interface Interaction {
   id: string;
   contactId: string;
-  type: InteractionType;
+  type: 'call' | 'email' | 'meeting' | 'note' | 'other';
+  title: string;
+  description?: string;
   date: Date;
-  notes?: string;
   createdAt: Date;
 }
 
@@ -49,10 +32,11 @@ export interface Reminder {
   id: string;
   contactId: string;
   contact: Contact;
-  date: Date;
   title: string;
   description?: string;
+  date: Date;
   completed: boolean;
+  recurring?: 'daily' | 'weekly' | 'monthly' | 'yearly' | null;
   createdAt: Date;
 }
 
